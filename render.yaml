@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: finance4life
+    runtime: python
+    plan: free
+    # Install dependencies.
+    buildCommand: "pip install -r requirements.txt"
+    # Bind to the port Render provides via $PORT.
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Store the SQLite DB on the mounted persistent disk so data survives
+      # restarts/redeploys. (For production, consider a managed Postgres.)
+      - key: DATABASE_URL
+        value: "sqlite:////var/data/finance4life.db"
+      - key: SECRET_KEY
+        generateValue: true
+    disk:
+      name: finance4life-data
+      mountPath: /var/data
+      sizeGB: 1
+
