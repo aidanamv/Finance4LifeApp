@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><title>Finance for Life — Interactive Sims</title><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-on-surface":"#eef0ff","on-surface-variant":"#414754","on-primary-fixed":"#001b3f","inverse-primary":"#abc7ff","on-tertiary-fixed-variant":"#174878","error-container":"#ffdad6","on-surface":"#131b2e","on-primary":"#ffffff","tertiary":"#325e8f","surface-tint":"#005cbb","error":"#ba1a1a","on-tertiary":"#ffffff","primary-fixed":"#d7e3ff","background":"#faf8ff","on-error-container":"#93000a","secondary":"#6e5e00","inverse-surface":"#283044","primary-fixed-dim":"#abc7ff","tertiary-fixed-dim":"#a1c9ff","on-secondary-fixed-variant":"#534600","surface":"#faf8ff","surface-container-high":"#e2e7ff","on-tertiary-container":"#fdfcff","on-secondary":"#ffffff","on-primary-container":"#fefcff","outline-variant":"#c1c6d6","tertiary-fixed":"#d2e4ff","on-tertiary-fixed":"#001c37","tertiary-container":"#4c77a9","primary-container":"#0072e4","surface-container":"#eaedff","surface-container-lowest":"#ffffff","secondary-fixed-dim":"#e5c519","on-secondary-fixed":"#221b00","surface-container-low":"#f2f3ff","on-secondary-container":"#716000","surface-dim":"#d2d9f4","on-primary-fixed-variant":"#00458f","secondary-fixed":"#ffe25b","on-error":"#ffffff","primary":"#005ab6","surface-container-highest":"#dae2fd","secondary-container":"#fddc36","surface-bright":"#faf8ff","outline":"#717785","surface-variant":"#dae2fd","on-background":"#131b2e"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},spacing:{"margin-tablet":"1.5rem","space-2xs":"0.25rem","margin-desktop":"2.5rem","gutter-desktop":"1.5rem","space-sm":"0.75rem","space-2xl":"3rem","space-xs":"0.5rem","space-xl":"2rem",margin:"1rem","space-md":"1rem",gutter:"1rem","space-lg":"1.5rem"},fontFamily:{"body-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],display:["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"currency-stat":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"body-md":["15px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"headline-xl-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"800"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0em",fontWeight:"500"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"30px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"800"}],display:["56px",{lineHeight:"64px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-md":["13px",{lineHeight:"18px",letterSpacing:"0.02em",fontWeight:"700"}],"currency-stat":["28px",{lineHeight:"34px",letterSpacing:"-0.02em",fontWeight:"800"}],"body-sm":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"400"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"700"}],"label-lg":["15px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"700"}],"headline-sm":["18px",{lineHeight:"26px",letterSpacing:"-0.005em",fontWeight:"700"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1280px] mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><a class="flex items-center gap-space-xs" data-path="learning-quests" href="index.html"><img alt="FFL_LOGO Principal.png" class="h-8 w-auto object-contain" src="logo.png"/><span class="inline-flex items-center px-space-xs py-space-2xs rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm tracking-wide uppercase">EDU</span></a><nav class="hidden xl:flex items-center gap-space-xs bg-surface-container-low p-space-2xs rounded-full"><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high hover:text-on-surface" data-path="learning-quests" href="index.html">Learning Quests</a><a aria-current="page" class="px-space-md py-space-xs rounded-full font-label-md transition-all bg-primary text-on-primary shadow-[0_4px_0_0_#00458f]" data-path="interactive-sims" href="sims.html">Interactive Sims</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high hover:text-on-surface" data-path="savings-vault" href="vault.html">Savings Vault</a></nav></div><div class="flex items-center gap-space-xs shrink-0"><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-space-xs rounded-full bg-secondary-container text-on-secondary-container shadow-[0_3px_0_0_#e5c519]"><span class="material-symbols-outlined text-[16px]">local_fire_department</span><span class="font-label-sm text-label-sm">12 Day Streak</span></div><div class="hidden md:flex items-center gap-space-2xs px-space-sm py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed"><span class="material-symbols-outlined text-[16px]">bolt</span><span class="font-label-sm text-label-sm">Lvl 4 • 2,450 XP</span></div><div class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded-full bg-surface-container-highest text-on-surface"><span class="material-symbols-outlined text-[16px] text-tertiary">account_balance_wallet</span><span class="font-label-md text-label-md">$ 1,280.00</span></div><div class="flex items-center gap-space-xs pl-space-xs py-space-2xs pr-space-sm rounded-full bg-surface-container-lowest shadow-[0_2px_6px_rgba(0,0,0,0.06)]"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="hidden lg:flex flex-col text-left"><span class="font-label-sm text-label-sm text-on-surface leading-none">Julian M.</span><span class="font-label-sm text-[10px] text-outline leading-tight">EN</span></div></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1280px] mx-auto px-4 md:px-8 py-8 space-y-8">
+<!-- Intro / how-it-works banner -->
+<div class="rounded-lg bg-surface-container-high p-5 md:p-6 space-y-4">
+<div class="flex flex-col md:flex-row md:items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed text-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[28px]">science</span></div>
+<div class="flex-1">
+<h1 class="font-headline-md text-headline-md text-on-surface font-extrabold">Investing Sandbox</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Practise investing with <strong class="text-on-surface">pretend money</strong> — zero real risk. Pick an asset, choose an amount, then Buy or Sell. Use <strong class="text-on-surface">Advance simulation</strong> to see how prices move over time and watch your portfolio react.</p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[15px] text-tertiary">lock</span> No real money</span>
+</div>
+</div>
+<details class="group bg-surface-container-lowest rounded-DEFAULT p-4">
+<summary class="flex items-center justify-between cursor-pointer list-none font-label-md text-label-md text-on-surface"><span class="flex items-center gap-2"><span class="material-symbols-outlined text-[18px] text-primary">help</span> How does this work?</span><span class="material-symbols-outlined text-[20px] text-outline transition-transform group-open:rotate-180">expand_more</span></summary>
+<ol class="mt-3 space-y-2 font-body-sm text-body-sm text-on-surface-variant list-decimal list-inside">
+<li><strong class="text-on-surface">You start with pretend cash.</strong> Your portfolio value = cash + what your holdings are worth right now.</li>
+<li><strong class="text-on-surface">Pick an asset.</strong> Each has a different risk level — steadier ones (like a savings bond) barely move; exciting ones swing more.</li>
+<li><strong class="text-on-surface">Buy or sell.</strong> Your money converts into shares at the current price. Selling turns shares back into cash.</li>
+<li><strong class="text-on-surface">Advance the simulation.</strong> Each step nudges every price up or down a little (bigger swings for riskier assets, always capped so you can't be wiped out). The chart shows that real price history.</li>
+<li><strong class="text-on-surface">Watch profit &amp; loss.</strong> It's the difference between what you paid on average and the current price — the heart of learning to invest.</li>
+</ol>
+<p class="mt-3 font-body-sm text-[12px] text-outline">It's a learning tool: no real money, no real companies, and prices are a simplified simulation — not real markets.</p>
+</details>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<div class="lg:col-span-4 bg-primary text-on-primary rounded-lg p-6 flex flex-col justify-between relative overflow-hidden shadow-xl">
+<div class="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+<div class="absolute -left-6 -bottom-6 w-32 h-32 rounded-full bg-secondary-container/20 blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim">Virtual Portfolio</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 text-on-primary font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span> Sandbox Live
+            </span>
+</div>
+<div class="mt-3 flex items-baseline gap-2">
+<span class="font-currency-stat text-display tracking-tight text-white font-extrabold" id="hud-total-val">$ 5,420.50</span>
+</div>
+<div class="mt-1 flex items-center gap-2">
+<span class="inline-flex items-center text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-200">
+<span class="material-symbols-outlined text-[14px] mr-0.5">trending_up</span>+8.41%
+            </span>
+<span class="font-body-sm text-body-sm text-primary-fixed-dim">(+$ 420.50 all-time)</span>
+</div>
+</div>
+<div class="mt-6 pt-5 bg-white/10 -mx-6 -mb-6 px-6 py-4 flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-primary-fixed-dim uppercase">Available Demo Cash</div>
+<div class="font-headline-sm text-headline-sm text-white font-bold" id="hud-cash-val">$ 1,280.00</div>
+</div>
+<button class="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 transition-all text-xs font-label-md flex items-center gap-1 active:scale-95" id="quick-reset-btn">
+<span class="material-symbols-outlined text-[15px]">restart_alt</span> Reset Demo
+          </button>
+</div>
+</div>
+<div class="lg:col-span-3 bg-surface-container-lowest rounded-lg p-6 flex flex-col justify-between shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase text-outline tracking-wider">Investor Status</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">Rookie Investor</h3>
+<span class="inline-block mt-0.5 px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded-full font-label-sm text-label-sm">Tier Level 3</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-[0_3px_0_0_#e5c519]">
+<span class="material-symbols-outlined text-[26px]">school</span>
+</div>
+</div>
+<div class="mt-5 space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Level Progress</span>
+<span class="font-bold text-on-surface">1,820 / 2,500 XP</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 72%"></div>
+</div>
+<p class="font-body-sm text-body-sm text-outline pt-1">Keep completing lessons and trades to level up your investor status.</p>
+</div>
+</div>
+<div class="lg:col-span-5 bg-surface-container-high rounded-lg p-6 relative overflow-hidden shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">timer</span> 24h Daily Challenge
+              </span>
+<span class="font-label-sm text-label-sm text-primary font-bold">+80 XP</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface pt-1">Green Mission</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Allocate at least <strong class="text-on-surface">$ 200</strong> into a Sustainable Fund before the market closes.</p>
+</div>
+<div class="shrink-0 w-14 h-14 rounded-xl bg-surface-container-lowest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[30px] text-tertiary">eco</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between pt-3">
+<div class="flex items-center gap-2 text-xs font-label-sm text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span> Closes in 4h 12m
+          </div>
+<button class="px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-[0_3px_0_0_#00458f] active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-1.5" onclick="selectPresetAsset('GREEN')">
+            Auto-fill Mission <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-7 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold">INDEX</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-extrabold" id="active-asset-title">TEEN Top 10</h2>
+<span class="text-xs px-2 py-0.5 bg-surface-container text-outline rounded-full font-label-sm">Exchange</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-currency-stat text-currency-stat text-on-surface font-black" id="chart-asset-price">$ 348.20</span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center" id="chart-asset-delta">
+<span class="material-symbols-outlined text-[14px]">north_east</span> +2.34% today
+                </span>
+</div>
+</div>
+<div class="flex items-center bg-surface-container p-1 rounded-full text-xs font-label-md">
+<button class="tf-btn px-3 py-1 rounded-full bg-primary text-on-primary shadow-sm transition-all" onclick="setTimeframe('1D', this)">1D</button>
+<button class="tf-btn px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all" onclick="setTimeframe('1W', this)">1W</button>
+<button class="tf-btn px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all" onclick="setTimeframe('1M', this)">1M</button>
+<button class="tf-btn px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all" onclick="setTimeframe('1Y', this)">1Y</button>
+<button class="tf-btn px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all" onclick="setTimeframe('ALL', this)">ALL</button>
+</div>
+</div>
+<div class="relative w-full h-64 bg-gradient-to-b from-primary-fixed/20 via-surface to-surface-container-lowest rounded-DEFAULT overflow-hidden p-2 flex flex-col justify-end">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none p-4 opacity-30">
+<div class="w-full h-px bg-outline-variant"></div>
+<div class="w-full h-px bg-outline-variant"></div>
+<div class="w-full h-px bg-outline-variant"></div>
+<div class="w-full h-px bg-outline-variant"></div>
+</div>
+<svg class="w-full h-full overflow-visible z-10" id="live-chart-svg" preserveaspectratio="none" viewbox="0 0 500 200">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#005ab6" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#005ab6" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 0,160 Q 60,110 120,130 T 240,90 T 360,70 T 500,30 L 500,200 L 0,200 Z" fill="url(#chartGradient)" id="chart-area"></path>
+<path d="M 0,160 Q 60,110 120,130 T 240,90 T 360,70 T 500,30" fill="none" id="chart-line" stroke="#005ab6" stroke-linecap="round" stroke-width="3.5"></path>
+<circle cx="500" cy="30" fill="#005ab6" id="chart-dot" r="5"></circle>
+<circle class="animate-ping" cx="500" cy="30" fill="#005ab6" opacity="0.3" r="10"></circle>
+</svg>
+<div class="absolute right-6 top-6 bg-surface-container-highest/90 backdrop-blur px-2.5 py-1 rounded-md text-[11px] font-label-sm text-on-surface-variant shadow-sm pointer-events-none" id="chart-illustrative-tag">
+              Price history
+            </div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between bg-surface-container-low p-4 rounded-DEFAULT gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">fast_forward</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Advance the simulation</div>
+<div class="font-body-sm text-body-sm text-outline">Jump forward in time to see how prices move.</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="sim-spd-btn px-3 py-1 rounded-full text-xs font-label-md bg-surface-container-lowest text-on-surface shadow-sm" onclick="adjustSimSpeed('1x', this)">+1 day</button>
+<button class="sim-spd-btn px-3 py-1 rounded-full text-xs font-label-md bg-primary text-on-primary shadow-[0_2px_0_0_#00458f]" onclick="adjustSimSpeed('10x', this)">+1 week</button>
+<button class="sim-spd-btn px-3 py-1 rounded-full text-xs font-label-md bg-surface-container-lowest text-on-surface" onclick="adjustSimSpeed('100x', this)">+1 month</button>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Featured Assets</h3>
+<span class="text-xs font-label-sm text-primary uppercase">Tap any asset to load</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div class="asset-card active-asset p-4 rounded-DEFAULT bg-surface-container-lowest hover:bg-surface-container-high transition-all cursor-pointer shadow-sm border-2 border-primary" onclick="selectAsset('TEEN', 'TEEN Top 10', 348.20, 2.34, 'Moderate', '2.8%')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed text-primary flex items-center justify-center font-bold">📈</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">TEEN 10</div>
+<div class="font-body-sm text-body-sm text-outline">Youth Index</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface">$ 348.20</div>
+<div class="text-xs font-bold text-emerald-600">+2.34%</div>
+</div>
+</div>
+</div>
+<div class="asset-card p-4 rounded-DEFAULT bg-surface-container-lowest hover:bg-surface-container-high transition-all cursor-pointer shadow-sm border-2 border-transparent" onclick="selectAsset('ONON', 'On Holding AG', 48.90, 5.12, 'High', '0.0%')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container text-on-surface flex items-center justify-center font-bold">🏃</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">On Running</div>
+<div class="font-body-sm text-body-sm text-outline">Athleisure</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface">$ 48.90</div>
+<div class="text-xs font-bold text-emerald-600">+5.12%</div>
+</div>
+</div>
+</div>
+<div class="asset-card p-4 rounded-DEFAULT bg-surface-container-lowest hover:bg-surface-container-high transition-all cursor-pointer shadow-sm border-2 border-transparent" onclick="selectAsset('LINDT', 'Lindt &amp; Sprüngli Part.', 108.40, -0.65, 'Low', '3.4%')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold">🍫</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Lindt Choc</div>
+<div class="font-body-sm text-body-sm text-outline">Chocolate Maker</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface">$ 108.40</div>
+<div class="text-xs font-bold text-error">-0.65%</div>
+</div>
+</div>
+</div>
+<div class="asset-card p-4 rounded-DEFAULT bg-surface-container-lowest hover:bg-surface-container-high transition-all cursor-pointer shadow-sm border-2 border-transparent" onclick="selectAsset('GREEN', 'Clean Green ETF', 142.00, 1.80, 'Low', '1.9%')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">🌱</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold">Green ETF</div>
+<div class="font-body-sm text-body-sm text-outline">Clean Energy Fund</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-on-surface">$ 142.00</div>
+<div class="text-xs font-bold text-emerald-600">+1.80%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-6 shadow-md space-y-5">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Trade Sandbox</h3>
+<span class="text-xs px-2.5 py-1 bg-surface-container text-on-surface-variant font-label-sm rounded-full">Zero Real Risk</span>
+</div>
+<div class="grid grid-cols-2 p-1 bg-surface-container rounded-full text-center">
+<button class="py-2 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm transition-all" id="trade-tab-buy" onclick="setTradeMode('BUY')">Buy Shares</button>
+<button class="py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" id="trade-tab-sell" onclick="setTradeMode('SELL')">Sell Shares</button>
+</div>
+<div class="p-3.5 bg-surface-container-low rounded-DEFAULT flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm text-outline">Target Asset</div>
+<div class="font-label-lg text-label-lg text-on-surface font-bold" id="trade-target-name">TEEN Top 10</div>
+</div>
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-outline">Sim Unit Price</div>
+<div class="font-label-lg text-label-lg text-primary font-extrabold" id="trade-target-price">$ 348.20</div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-xs font-label-sm">
+<span class="text-outline">Select Investment Sum:</span>
+<span class="text-primary cursor-pointer hover:underline" onclick="setInvestAmount(1280)">Max ($ 1,280.00)</span>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="amt-pill py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm transition-all" onclick="setInvestAmount(50)">$ 50</button>
+<button class="amt-pill py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm transition-all" onclick="setInvestAmount(100)">$ 100</button>
+<button class="amt-pill py-2 rounded-lg bg-secondary-container text-on-secondary-container font-label-sm font-bold transition-all shadow-[0_2px_0_0_#e5c519]" onclick="setInvestAmount(200)">$ 200</button>
+<button class="amt-pill py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm transition-all" onclick="setInvestAmount(500)">$ 500</button>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-outline">Custom $ Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant text-sm">$</span>
+<input class="w-full h-12 pl-14 pr-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none text-on-surface font-bold text-lg" id="trade-amount-input" max="5000" min="10" oninput="calculateTrade()" type="number" value="200"/>
+</div>
+</div>
+<div class="space-y-2 py-2 text-xs font-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Estimated Shares:</span>
+<span class="font-bold text-on-surface" id="est-shares-qty">0.574 units</span>
+</div>
+<div class="flex justify-between">
+<span>Expected Annual Dividends:</span>
+<span class="font-bold text-emerald-600" id="est-dividends">~ $ 5.60 / yr</span>
+</div>
+<div class="flex justify-between items-center">
+<span>Risk Classification:</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-[10px]" id="est-risk-pill">Moderate Risk</span>
+</div>
+</div>
+<div class="p-3 bg-secondary-container/40 rounded-DEFAULT flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5 shrink-0">verified_user</span>
+<p class="font-body-sm text-[12px] text-on-secondary-container leading-tight">
+<strong>Smart Saver Rule:</strong> Never put all your chocolate in one basket! Keep a buffer in cash for weekend outings and emergencies.
+            </p>
+</div>
+<button class="w-full py-4 rounded-full bg-secondary-container text-on-secondary-container font-label-lg text-label-lg font-black tracking-wide shadow-[0_5px_0_0_#e5c519] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2" id="execute-trade-btn" onclick="executeVirtualTrade()">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span> EXECUTE VIRTUAL TRADE
+          </button>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Simulator Missions</h4>
+<span class="material-symbols-outlined text-tertiary">military_tech</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-surface-container-low space-y-2">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface font-bold">Balanced Portfolio Master</span>
+<span class="text-xs font-bold text-primary">2 / 3 Complete</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Hold at least one Tech, Health, and Consumer stock simultaneously.</p>
+<div class="w-full h-2 rounded-full bg-surface-container">
+<div class="h-full bg-primary rounded-full" style="width: 66%"></div>
+</div>
+</div>
+<div class="p-4 rounded-DEFAULT bg-gradient-to-r from-surface-container-high to-surface-container space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">crisis_alert</span>
+<div class="font-label-md text-label-md text-on-surface font-bold">Risk Lab: 2022 Market Dip</div>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Can your nerves handle a sudden -15% market slump? Test whether you panic-sell or buy the discount.</p>
+<button class="w-full py-2.5 rounded-full bg-surface-container-lowest hover:bg-white text-on-surface font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-2 active:scale-98" onclick="triggerMarketDip()">
+<span class="material-symbols-outlined text-[16px]">play_circle</span> Launch Dip Simulation
+            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Your Sandbox Holdings</h3>
+<p class="font-body-sm text-body-sm text-outline">Everything you buy appears here. Values update when you advance the simulation.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant px-3 py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Pretend money only</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-sm text-label-sm text-outline uppercase tracking-wider bg-surface-container-low rounded-lg">
+<th class="py-3 px-4 rounded-l-lg">Asset Name</th>
+<th class="py-3 px-3">Units Held</th>
+<th class="py-3 px-3">Avg. Buy Price</th>
+<th class="py-3 px-3">Current Market</th>
+<th class="py-3 px-3">Profit / Loss</th>
+<th class="py-3 px-4 rounded-r-lg text-right">Educational Explainer</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container" id="holdings-tbody">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 font-bold text-on-surface flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-primary-fixed text-primary flex items-center justify-center font-bold text-xs">📈</span>
+<div>
+<div class="font-label-md text-label-md">TEEN Top 10</div>
+<div class="text-[11px] text-outline font-normal">Youth ETF Index</div>
+</div>
+</td>
+<td class="py-4 px-3 font-label-md text-on-surface">6.80 units</td>
+<td class="py-4 px-3 font-body-sm text-outline">$ 320.00</td>
+<td class="py-4 px-3 font-label-md text-on-surface">$ 348.20</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-xs font-bold">+$ 191.76 (+8.8%)</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-label-sm text-primary hover:underline flex items-center justify-end gap-1 ml-auto" onclick="showExplainer('Index Gains', 'Because you hold 10 diversified blue-chip stocks, strong tech earnings balanced out consumer drops!')">
+<span class="material-symbols-outlined text-[15px]">psychology</span> Why did this move?
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 font-bold text-on-surface flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-on-surface flex items-center justify-center font-bold text-xs">🏃</span>
+<div>
+<div class="font-label-md text-label-md">On Holding AG</div>
+<div class="text-[11px] text-outline font-normal">Footwear &amp; Apparel</div>
+</div>
+</td>
+<td class="py-4 px-3 font-label-md text-on-surface">15.00 units</td>
+<td class="py-4 px-3 font-body-sm text-outline">$ 42.50</td>
+<td class="py-4 px-3 font-label-md text-on-surface">$ 48.90</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-xs font-bold">+$ 96.00 (+15.0%)</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-label-sm text-primary hover:underline flex items-center justify-end gap-1 ml-auto" onclick="showExplainer('Sneaker Innovation', 'Worldwide youth hype and new carbon marathon shoes boosted On Q3 retail revenue!')">
+<span class="material-symbols-outlined text-[15px]">psychology</span> Why did this move?
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4 font-bold text-on-surface flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-xs">🍫</span>
+<div>
+<div class="font-label-md text-label-md">Lindt &amp; Sprüngli</div>
+<div class="text-[11px] text-outline font-normal">Chocolade Fabriken</div>
+</div>
+</td>
+<td class="py-4 px-3 font-label-md text-on-surface">8.00 units</td>
+<td class="py-4 px-3 font-body-sm text-outline">$ 112.00</td>
+<td class="py-4 px-3 font-label-md text-on-surface">$ 108.40</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-red-100 text-red-800 font-label-sm text-xs font-bold">-$ 28.80 (-3.2%)</span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-xs font-label-sm text-primary hover:underline flex items-center justify-end gap-1 ml-auto" onclick="showExplainer('Cocoa Bean Inflation', 'Global cocoa harvest shortfalls temporarily raised production costs, tightening chocolate profit margins.')">
+<span class="material-symbols-outlined text-[15px]">psychology</span> Why did this move?
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-inverse-surface/40 backdrop-blur-sm hidden" id="explainer-modal">
+<div class="bg-surface-container-lowest max-w-md w-full rounded-lg p-6 shadow-2xl space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined">lightbulb</span>
+<span class="font-headline-sm text-headline-sm" id="modal-title">Financial Explainer</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline hover:text-on-surface" onclick="closeExplainer()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant" id="modal-desc">Explainer details here.</p>
+<div class="pt-2">
+<button class="w-full py-2.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-[0_3px_0_0_#00458f]" onclick="closeExplainer()">Got it, thanks!</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  let state = { portfolioCash: 1280.00, totalPortfolioValue: 5420.50, tradeMode: 'BUY',
+    currentAsset: { code: 'TEEN', name: 'TEEN Top 10', price: 348.20, delta: 2.34, risk: 'Moderate', yield: '2.8%' }, simSpeed: '10x' };
+  function selectAsset(code, name, price, delta, risk, divYield) {
+    state.currentAsset = { code, name, price, delta, risk, yield: divYield };
+    document.querySelectorAll('.asset-card').forEach(el => { el.classList.remove('border-primary'); el.classList.add('border-transparent'); });
+    event.currentTarget.classList.add('border-primary'); event.currentTarget.classList.remove('border-transparent');
+    document.getElementById('active-asset-title').innerText = name;
+    document.getElementById('chart-asset-price').innerText = '$ ' + price.toFixed(2);
+    const deltaEl = document.getElementById('chart-asset-delta');
+    if(delta >= 0) { deltaEl.className = 'text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center'; deltaEl.innerHTML = `<span class="material-symbols-outlined text-[14px]">north_east</span> +${delta.toFixed(2)}% today`; }
+    else { deltaEl.className = 'text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full flex items-center'; deltaEl.innerHTML = `<span class="material-symbols-outlined text-[14px]">south_east</span> ${delta.toFixed(2)}% today`; }
+    document.getElementById('trade-target-name').innerText = name;
+    document.getElementById('trade-target-price').innerText = '$ ' + price.toFixed(2);
+    calculateTrade(); morphChart(code);
+  }
+  function selectPresetAsset(code) { if(code === 'GREEN') { selectAsset('GREEN', 'Clean Green ETF', 142.00, 1.80, 'Low', '1.9%'); setInvestAmount(200); document.getElementById('trade-amount-input').scrollIntoView({ behavior: 'smooth' }); } }
+  function setTradeMode(mode) {
+    state.tradeMode = mode;
+    const buyBtn = document.getElementById('trade-tab-buy'); const sellBtn = document.getElementById('trade-tab-sell'); const actionBtn = document.getElementById('execute-trade-btn');
+    if (mode === 'BUY') { buyBtn.className = "py-2 rounded-full font-label-md text-label-md bg-primary text-on-primary shadow-sm transition-all"; sellBtn.className = "py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all"; actionBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">rocket_launch</span> EXECUTE VIRTUAL BUY`; actionBtn.className = "w-full py-4 rounded-full bg-secondary-container text-on-secondary-container font-label-lg text-label-lg font-black tracking-wide shadow-[0_5px_0_0_#e5c519] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2"; }
+    else { sellBtn.className = "py-2 rounded-full font-label-md text-label-md bg-inverse-surface text-inverse-on-surface shadow-sm transition-all"; buyBtn.className = "py-2 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all"; actionBtn.innerHTML = `<span class="material-symbols-outlined text-[20px]">savings</span> EXECUTE VIRTUAL SALE`; actionBtn.className = "w-full py-4 rounded-full bg-inverse-surface text-inverse-on-surface font-label-lg text-label-lg font-black tracking-wide shadow-[0_5px_0_0_#131b2e] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2"; }
+    calculateTrade();
+  }
+  function setInvestAmount(amt) { document.getElementById('trade-amount-input').value = amt; calculateTrade(); }
+  function calculateTrade() {
+    const amt = parseFloat(document.getElementById('trade-amount-input').value) || 0; const price = state.currentAsset.price;
+    const shares = amt > 0 ? (amt / price).toFixed(3) : '0.000'; document.getElementById('est-shares-qty').innerText = `${shares} units`;
+    const yldPercent = parseFloat(state.currentAsset.yield) / 100; const estDiv = (amt * yldPercent).toFixed(2); document.getElementById('est-dividends').innerText = `~ $ ${estDiv} / yr`;
+    const riskPill = document.getElementById('est-risk-pill'); riskPill.innerText = `${state.currentAsset.risk} Risk`;
+    if(state.currentAsset.risk === 'Low') { riskPill.className = "px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-[10px]"; }
+    else if(state.currentAsset.risk === 'Moderate') { riskPill.className = "px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-label-sm text-[10px]"; }
+    else { riskPill.className = "px-2 py-0.5 rounded-full bg-red-100 text-red-800 font-label-sm text-[10px]"; }
+  }
+  function executeVirtualTrade() {
+    const amt = parseFloat(document.getElementById('trade-amount-input').value) || 0; if (amt <= 0) return;
+    if (state.tradeMode === 'BUY') { if (amt > state.portfolioCash) { alert("Not enough demo cash! Try selling an asset or clicking 'Reset Demo'."); return; } state.portfolioCash -= amt; state.totalPortfolioValue += (amt * 0.005); }
+    else { state.portfolioCash += amt; }
+    document.getElementById('hud-cash-val').innerText = `$ ${state.portfolioCash.toFixed(2)}`; document.getElementById('hud-total-val').innerText = `$ ${state.totalPortfolioValue.toFixed(2)}`;
+    if (state.tradeMode === 'BUY') {
+      const tbody = document.getElementById('holdings-tbody'); const tr = document.createElement('tr'); tr.className = "hover:bg-surface-container-low/50 transition-colors"; const shares = (amt / state.currentAsset.price).toFixed(2);
+      tr.innerHTML = `<td class="py-4 px-4 font-bold text-on-surface flex items-center gap-2.5"><span class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-xs">✨</span><div><div class="font-label-md text-label-md">${state.currentAsset.name}</div><div class="text-[11px] text-outline font-normal">Fresh Trade</div></div></td><td class="py-4 px-3 font-label-md text-on-surface">${shares} units</td><td class="py-4 px-3 font-body-sm text-outline">$ ${state.currentAsset.price.toFixed(2)}</td><td class="py-4 px-3 font-label-md text-on-surface">$ ${state.currentAsset.price.toFixed(2)}</td><td class="py-4 px-3"><span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-xs font-bold">+$ 0.00 (0.0%)</span></td><td class="py-4 px-4 text-right"><button onclick="showExplainer('Virtual Order Executed', 'Order placed directly into the simulated trading sandbox with zero real capital risk!')" class="text-xs font-label-sm text-primary hover:underline flex items-center justify-end gap-1 ml-auto"><span class="material-symbols-outlined text-[15px]">psychology</span> Why did this move?</button></td>`;
+      tbody.prepend(tr);
+    }
+    const btn = document.getElementById('execute-trade-btn'); const originalText = btn.innerHTML; btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check_circle</span> SIMULATED ORDER FILLED!`; setTimeout(() => { btn.innerHTML = originalText; }, 1600);
+  }
+  function setTimeframe(tf, btn) { document.querySelectorAll('.tf-btn').forEach(b => { b.className = "tf-btn px-3 py-1 rounded-full text-on-surface-variant hover:text-on-surface transition-all"; }); btn.className = "tf-btn px-3 py-1 rounded-full bg-primary text-on-primary shadow-sm transition-all"; morphChart(state.currentAsset.code); }
+  function adjustSimSpeed(speed, btn) { state.simSpeed = speed; document.querySelectorAll('.sim-spd-btn').forEach(b => { b.className = "sim-spd-btn px-3 py-1 rounded-full text-xs font-label-md bg-surface-container-lowest text-on-surface"; }); btn.className = "sim-spd-btn px-3 py-1 rounded-full text-xs font-label-md bg-primary text-on-primary shadow-[0_2px_0_0_#00458f]"; }
+  function morphChart(seed) {
+    const area = document.getElementById('chart-area'); const line = document.getElementById('chart-line'); const dot = document.getElementById('chart-dot');
+    if (seed === 'ONON') { line.setAttribute('d', 'M 0,180 Q 80,160 160,110 T 320,60 T 420,50 T 500,20'); area.setAttribute('d', 'M 0,180 Q 80,160 160,110 T 320,60 T 420,50 T 500,20 L 500,200 L 0,200 Z'); dot.setAttribute('cy', '20'); }
+    else if (seed === 'LINDT') { line.setAttribute('d', 'M 0,60 Q 90,80 180,70 T 300,120 T 400,130 T 500,140'); area.setAttribute('d', 'M 0,60 Q 90,80 180,70 T 300,120 T 400,130 T 500,140 L 500,200 L 0,200 Z'); dot.setAttribute('cy', '140'); }
+    else if (seed === 'GREEN') { line.setAttribute('d', 'M 0,140 Q 100,130 200,90 T 350,80 T 440,60 T 500,45'); area.setAttribute('d', 'M 0,140 Q 100,130 200,90 T 350,80 T 440,60 T 500,45 L 500,200 L 0,200 Z'); dot.setAttribute('cy', '45'); }
+    else { line.setAttribute('d', 'M 0,160 Q 60,110 120,130 T 240,90 T 360,70 T 500,30'); area.setAttribute('d', 'M 0,160 Q 60,110 120,130 T 240,90 T 360,70 T 500,30 L 500,200 L 0,200 Z'); dot.setAttribute('cy', '30'); }
+  }
+  function triggerMarketDip() { state.totalPortfolioValue -= 450.00; document.getElementById('hud-total-val').innerText = '$ ' + state.totalPortfolioValue.toFixed(2); showExplainer('🚨 SIMULATED FLASH CRASH: -15%!', 'the markets just took a dive! Top investors don\'t panic-sell at the bottom. History shows diversified portfolios recover over 2-5 years. What is your strategy?'); morphChart('LINDT'); }
+  function showExplainer(title, desc) { document.getElementById('modal-title').innerText = title; document.getElementById('modal-desc').innerText = desc; document.getElementById('explainer-modal').classList.remove('hidden'); }
+  function closeExplainer() { document.getElementById('explainer-modal').classList.add('hidden'); }
+  document.getElementById('quick-reset-btn').addEventListener('click', () => { state.portfolioCash = 1280.00; state.totalPortfolioValue = 5420.50; document.getElementById('hud-cash-val').innerText = '$ 1,280.00'; document.getElementById('hud-total-val').innerText = '$ 5,420.50'; calculateTrade(); });
+</script><script src="api.js?v=13"></script></main><footer class="w-full bg-surface-container-low mt-space-2xl text-on-surface-variant"><div class="max-w-[1280px] mx-auto px-margin-desktop py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-xl"><div class="md:col-span-2 space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="FFL_LOGO Principal.png" class="h-7 w-auto object-contain" src="logo.png"/><span class="font-label-sm text-label-sm text-tertiary bg-surface-container-high px-space-xs py-space-2xs rounded-full uppercase tracking-wider">Youth Initiative</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Empowering teenagers to master money, compound savings, tax essentials, and mindful investments through interactive simulations and gamified questlines.</p></div><div><div class="font-label-md text-label-md text-on-surface mb-space-sm uppercase tracking-wider">Curriculum Paths</div><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="hover:text-primary transition-colors"><a href="#">Retirement &amp; Pensions</a></li><li class="hover:text-primary transition-colors"><a href="#">Budgeting Your Paycheck</a></li><li class="hover:text-primary transition-colors"><a href="#">Debit Cards &amp; Payment Safety</a></li><li class="hover:text-primary transition-colors"><a href="#">Crypto &amp; Stock Sandboxes</a></li></ul></div><div><div class="font-label-md text-label-md text-on-surface mb-space-sm uppercase tracking-wider">Teen Network</div><ul class="space-y-space-xs font-body-sm text-body-sm"><li class="hover:text-primary transition-colors"><a href="#">High School League</a></li><li class="hover:text-primary transition-colors"><a href="#">Financial Fairplay Guidelines</a></li><li class="hover:text-primary transition-colors"><a href="#">Parent &amp; Mentor Portal</a></li><li class="hover:text-primary transition-colors"><a href="#">Educational FAQ</a></li></ul></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-outline"><div class="flex items-center gap-space-xs"><span>© 2025 Finance For Life (FFL).</span></div><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" href="#">Privacy</a><a class="hover:text-on-surface transition-colors" href="#">Terms of Use</a><a class="hover:text-on-surface transition-colors" href="#">Contact Mentors</a></div></div></div></footer></body></html>
+
+
+
+

@@ -1,0 +1,217 @@
+:root {
+  /* Brand palette from the Finance for Life logo */
+  --f4l-blue: #4294f7;
+  --f4l-blue-dark: #2f7fe0;
+  --f4l-blue-light: #b8d9fa;
+  --f4l-yellow: #f5d83c;
+  --f4l-yellow-dark: #e6c21f;
+  --f4l-white: #ffffff;
+  --f4l-ink: #163a63;
+  --f4l-surface: #ffffff;
+  --f4l-shadow: rgba(22, 58, 99, 0.18);
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  background: var(--f4l-blue);
+  color: var(--f4l-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--f4l-blue-dark); }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- Header ---------------- */
+.header {
+  padding: 22px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: -0.5px;
+  line-height: 0.9;
+}
+.logo .finance { color: var(--f4l-white); }
+.logo .for { color: var(--f4l-blue-light); }
+.logo .life { color: var(--f4l-yellow); }
+
+.coin-pill {
+  background: var(--f4l-yellow);
+  color: var(--f4l-ink);
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: 0 6px 0 var(--f4l-yellow-dark);
+  font-size: 1.1rem;
+}
+
+/* ---------------- Tabs ---------------- */
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 0 32px;
+  flex-wrap: wrap;
+}
+.tab {
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 12px 22px;
+  border-radius: 999px 999px 0 0;
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--f4l-white);
+  transition: all 0.15s ease;
+}
+.tab:hover { background: rgba(255, 255, 255, 0.4); }
+.tab.active {
+  background: var(--f4l-white);
+  color: var(--f4l-blue-dark);
+}
+
+/* ---------------- Content area ---------------- */
+.content {
+  flex: 1;
+  background: var(--f4l-white);
+  margin: 0 16px 16px;
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 12px 30px var(--f4l-shadow);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* ---------------- Cards ---------------- */
+.card {
+  background: var(--f4l-white);
+  border: 3px solid var(--f4l-blue-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card h3 { margin: 0; color: var(--f4l-blue-dark); }
+.card .muted { color: #5a7799; font-size: 0.9rem; }
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--f4l-ink);
+}
+
+/* ---------------- Buttons ---------------- */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: transform 0.08s ease;
+}
+.btn:active { transform: translateY(2px); }
+.btn-primary {
+  background: var(--f4l-blue);
+  color: var(--f4l-white);
+  box-shadow: 0 5px 0 var(--f4l-blue-dark);
+}
+.btn-yellow {
+  background: var(--f4l-yellow);
+  color: var(--f4l-ink);
+  box-shadow: 0 5px 0 var(--f4l-yellow-dark);
+}
+.btn-ghost {
+  background: var(--f4l-blue-light);
+  color: var(--f4l-blue-dark);
+}
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+input, select {
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--f4l-blue-light);
+  font-size: 1rem;
+  font-family: inherit;
+}
+input:focus, select:focus { outline: none; border-color: var(--f4l-blue); }
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--f4l-blue-dark);
+  margin: 0 0 16px;
+}
+
+/* ---------------- Progress bar ---------------- */
+.progress {
+  background: var(--f4l-blue-light);
+  border-radius: 999px;
+  height: 16px;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  background: var(--f4l-yellow);
+}
+
+/* ---------------- Slide viewer ---------------- */
+.slide {
+  background: var(--f4l-blue);
+  color: var(--f4l-white);
+  border-radius: var(--radius);
+  padding: 40px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slide h2 { font-size: 2rem; margin-top: 0; }
+.slide p { font-size: 1.2rem; line-height: 1.5; white-space: pre-wrap; }
+
+.quiz-option {
+  text-align: left;
+  background: var(--f4l-blue-light);
+  color: var(--f4l-ink);
+  border: 3px solid transparent;
+}
+.quiz-option.selected { border-color: var(--f4l-blue-dark); }
+.quiz-option.correct { background: #bff0c8; border-color: #35a853; }
+.quiz-option.wrong { background: #ffc9c9; border-color: #e24b4b; }
+
+.center { text-align: center; }
+.stack { display: flex; flex-direction: column; gap: 14px; }
+.row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.pill-badge {
+  background: var(--f4l-blue-light);
+  color: var(--f4l-blue-dark);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+.empty {
+  text-align: center;
+  color: #5a7799;
+  padding: 40px;
+}
+

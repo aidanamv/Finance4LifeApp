@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finance for Life — Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface-variant":"#414754","on-surface":"#131b2e","on-primary":"#ffffff","tertiary":"#325e8f","error":"#ba1a1a","primary-fixed":"#d7e3ff","background":"#faf8ff","secondary":"#6e5e00","surface":"#faf8ff","surface-container-high":"#e2e7ff","surface-container":"#eaedff","surface-container-lowest":"#ffffff","surface-container-low":"#f2f3ff","secondary-container":"#fddc36","on-secondary-container":"#716000","primary":"#005ab6","surface-container-highest":"#dae2fd","outline":"#717785"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{body:["Plus Jakarta Sans"]}}}}</script>
+<style>body{font-family:'Plus Jakarta Sans',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen">
+<header class="bg-surface-container-lowest shadow-sm">
+  <div class="max-w-[720px] mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2"><img alt="Finance for Life" class="h-7 w-auto object-contain" src="logo.png"/><span class="font-extrabold">Finance for Life</span></a>
+    <a href="index.html" class="text-sm font-bold text-primary hover:underline">← Back to app</a>
+  </div>
+</header>
+
+<main class="max-w-[720px] mx-auto px-6 py-10">
+  <h1 class="text-2xl font-extrabold mb-1">Settings ⚙️</h1>
+  <p class="text-on-surface-variant mb-6">Preferences for <span id="f4l-who" class="font-bold">your profile</span>. Saved to your account.</p>
+
+  <form id="f4l-settings-form" class="flex flex-col gap-5 bg-surface-container-lowest rounded-xl shadow-md p-6" onsubmit="return false;">
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Language</span>
+      <select id="f4l-locale" class="h-12 px-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none font-medium">
+        <option value="de-CH">Deutsch (CH)</option>
+        <option value="fr-CH">Français (CH)</option>
+        <option value="it-CH">Italiano (CH)</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Theme</span>
+      <select id="f4l-theme" class="h-12 px-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none font-medium">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+
+    <label class="flex items-center gap-3">
+      <input id="f4l-sound" type="checkbox" class="w-5 h-5"/>
+      <span class="font-medium">Sound effects</span>
+    </label>
+
+    <label class="flex items-center gap-3">
+      <input id="f4l-notifications" type="checkbox" class="w-5 h-5"/>
+      <span class="font-medium">Notifications</span>
+    </label>
+
+    <p id="f4l-status" class="text-sm font-bold text-primary"></p>
+
+    <div class="flex items-center justify-between gap-3 pt-2">
+      <button id="f4l-logout" type="button" class="px-5 h-11 rounded-full bg-surface-container-high text-on-surface font-bold">Log out</button>
+      <button id="f4l-save" type="submit" class="px-6 h-11 rounded-full bg-primary text-on-primary font-bold shadow-[0_4px_0_0_#00458f] active:translate-y-0.5 active:shadow-none transition-all">Save settings</button>
+    </div>
+  </form>
+</main>
+
+<script src="api.js?v=13"></script>
+<script>
+(function () {
+  const api = window.F4L.api;
+  const $ = (id) => document.getElementById(id);
+  const child = window.F4L.currentChild();
+  if (!child) { window.location.href = 'login.html'; return; }
+  if (child.display_name) $('f4l-who').textContent = child.display_name;
+
+  const status = (msg, ok = true) => { const s = $('f4l-status'); s.textContent = msg; s.className = 'text-sm font-bold ' + (ok ? 'text-primary' : 'text-error'); };
+
+  async function load() {
+    try {
+      const s = await api.getSettings(child.id);
+      $('f4l-locale').value = s.locale;
+      $('f4l-theme').value = s.theme;
+      $('f4l-sound').checked = s.sound_enabled;
+      $('f4l-notifications').checked = s.notifications_enabled;
+    } catch (e) { status(e.message, false); }
+  }
+
+  async function save() {
+    $('f4l-save').disabled = true;
+    try {
+      await api.updateSettings(child.id, {
+        locale: $('f4l-locale').value,
+        theme: $('f4l-theme').value,
+        sound_enabled: $('f4l-sound').checked,
+        notifications_enabled: $('f4l-notifications').checked,
+      });
+      status('Saved ✓');
+    } catch (e) { status(e.message, false); }
+    finally { $('f4l-save').disabled = false; }
+  }
+
+  $('f4l-settings-form').addEventListener('submit', save);
+  $('f4l-logout').addEventListener('click', () => window.F4L.logout());
+  load();
+})();
+</script>
+</body>
+</html>
+
+
+
+

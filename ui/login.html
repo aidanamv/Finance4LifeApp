@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finance for Life — Sign in</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface-variant":"#414754","error-container":"#ffdad6","on-surface":"#131b2e","on-primary":"#ffffff","tertiary":"#325e8f","error":"#ba1a1a","primary-fixed":"#d7e3ff","background":"#faf8ff","on-error-container":"#93000a","secondary":"#6e5e00","surface":"#faf8ff","surface-container-high":"#e2e7ff","on-primary-container":"#fefcff","on-secondary-container":"#716000","surface-container":"#eaedff","surface-container-lowest":"#ffffff","primary-container":"#0072e4","surface-container-low":"#f2f3ff","on-primary-fixed":"#001b3f","secondary-container":"#fddc36","on-secondary-container":"#716000","on-primary-fixed-variant":"#00458f","primary":"#005ab6","surface-container-highest":"#dae2fd","surface-variant":"#dae2fd","outline":"#717785"},borderRadius:{DEFAULT:"1rem",lg:"2rem",xl:"3rem",full:"9999px"},fontFamily:{body:["Plus Jakarta Sans"]}}}}</script>
+<style>body{font-family:'Plus Jakarta Sans',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex items-center justify-center p-4">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-xl p-8 flex flex-col gap-6">
+  <div class="flex flex-col items-center gap-2 text-center">
+    <img alt="Finance for Life" class="h-10 w-auto object-contain" src="logo.png"/>
+    <h1 class="text-2xl font-extrabold tracking-tight">Finance for Life</h1>
+    <p class="text-on-surface-variant text-sm" id="f4l-subtitle">Log in to continue your family's learning journey.</p>
+  </div>
+
+  <!-- Login / signup form -->
+  <form id="f4l-login-form" class="flex flex-col gap-4" onsubmit="return false;">
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Parent email</span>
+      <input id="f4l-email" type="email" autocomplete="email" placeholder="you@example.com"
+        class="h-12 px-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none font-medium"/>
+    </label>
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Password</span>
+      <input id="f4l-password" type="password" autocomplete="current-password" placeholder="••••••••"
+        class="h-12 px-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none font-medium"/>
+    </label>
+
+    <!-- Shown only in signup mode: the child's display name -->
+    <label id="f4l-childname-wrap" class="hidden flex-col gap-1">
+      <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Teen's display name</span>
+      <input id="f4l-childname" type="text" maxlength="40" placeholder="e.g. Max"
+        class="h-12 px-4 rounded-DEFAULT bg-surface-container-lowest border-2 border-surface-container-highest focus:border-primary focus:outline-none font-medium"/>
+    </label>
+
+    <p id="f4l-error" class="hidden text-sm font-bold text-error"></p>
+
+    <button id="f4l-submit" type="submit"
+      class="h-12 rounded-full bg-primary text-on-primary font-bold shadow-[0_4px_0_0_#00458f] active:translate-y-0.5 active:shadow-none transition-all">
+      Log in
+    </button>
+  </form>
+
+  <!-- Profile picker (after login, when there are multiple children) -->
+  <div id="f4l-profiles" class="hidden flex-col gap-3">
+    <h2 class="text-lg font-bold text-center">Who's learning today? 🎒</h2>
+    <div id="f4l-profiles-grid" class="grid grid-cols-1 gap-2"></div>
+  </div>
+
+  <p class="text-center text-sm text-on-surface-variant">
+    <span id="f4l-toggle-text">New here?</span>
+    <a href="#" id="f4l-toggle" class="text-primary font-bold hover:underline">Create an account</a>
+  </p>
+</div>
+
+<script src="api.js?v=13"></script>
+<script>
+(function () {
+  const api = window.F4L.api;
+  let mode = 'login'; // or 'signup'
+  const $ = (id) => document.getElementById(id);
+  const err = (msg) => { const e = $('f4l-error'); e.textContent = msg; e.classList.toggle('hidden', !msg); };
+
+  function setChild(child) {
+    localStorage.setItem('f4l_child', JSON.stringify({ id: child.id, display_name: child.display_name }));
+    localStorage.setItem('f4l_child_id', child.id);
+    window.location.href = 'index.html';
+  }
+
+  function showProfiles(parent) {
+    $('f4l-login-form').classList.add('hidden');
+    $('f4l-profiles').classList.remove('hidden');
+    $('f4l-profiles').classList.add('flex');
+    const grid = $('f4l-profiles-grid');
+    grid.innerHTML = '';
+    parent.children.forEach((c) => {
+      const b = document.createElement('button');
+      b.className = 'w-full p-4 rounded-DEFAULT bg-surface-container-low hover:bg-surface-container-high transition-all text-left flex items-center gap-3';
+      b.innerHTML = `<span class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-bold">${(c.display_name||'?').slice(0,1)}</span><span class="font-bold">${c.display_name}</span>`;
+      b.addEventListener('click', () => setChild(c));
+      grid.appendChild(b);
+    });
+  }
+
+  async function createFirstChild(parentId, name) {
+    try { await api.consent(parentId); } catch (_) {}
+    return api.createChild(parentId, name);
+  }
+
+  async function handleSubmit() {
+    err('');
+    const email = $('f4l-email').value.trim();
+    const password = $('f4l-password').value;
+    if (!email || !password) { err('Please enter your email and password.'); return; }
+    const btn = $('f4l-submit');
+    btn.disabled = true;
+    try {
+      if (mode === 'login') {
+        const parent = await api.login(email, password);
+        if (!parent.children || parent.children.length === 0) {
+          // No profile yet — ask for a display name and create one.
+          switchMode('signup', 'Create your teen\'s profile to get started.');
+          window._f4lParent = parent;
+          err('');
+          return;
+        }
+        if (parent.children.length === 1) setChild(parent.children[0]);
+        else showProfiles(parent);
+      } else {
+        const name = $('f4l-childname').value.trim();
+        if (!name) { err('Enter a display name for your teen.'); return; }
+        let parent = window._f4lParent;
+        if (!parent) {
+          parent = await api.createParent(email, password);
+        }
+        const child = await createFirstChild(parent.id, name);
+        setChild(child);
+      }
+    } catch (e) {
+      err(e.message || 'Something went wrong.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  function switchMode(next, subtitle) {
+    mode = next;
+    const signup = mode === 'signup';
+    $('f4l-childname-wrap').classList.toggle('hidden', !signup);
+    $('f4l-childname-wrap').classList.toggle('flex', signup);
+    $('f4l-submit').textContent = signup ? 'Create account' : 'Log in';
+    $('f4l-toggle-text').textContent = signup ? 'Already have an account?' : 'New here?';
+    $('f4l-toggle').textContent = signup ? 'Log in' : 'Create an account';
+    $('f4l-subtitle').textContent = subtitle || (signup
+      ? 'Create a parent account and your teen\'s profile.'
+      : 'Log in to continue your family\'s learning journey.');
+    err('');
+  }
+
+  $('f4l-login-form').addEventListener('submit', handleSubmit);
+  $('f4l-toggle').addEventListener('click', (e) => {
+    e.preventDefault();
+    window._f4lParent = null;
+    switchMode(mode === 'login' ? 'signup' : 'login');
+  });
+
+  // If already logged in, skip straight to the app.
+  if (window.F4L.currentChild()) window.location.href = 'index.html';
+})();
+</script>
+</body>
+</html>
+
+
+
+
