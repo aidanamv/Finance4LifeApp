@@ -1,12 +1,45 @@
+import os
 from collections.abc import Generator
+from pathlib import Path
 
 from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from app.config import settings
 
-connect_args = {"check_same_thread": False} if settings.database_url.startswith("sqlite") else {}
-engine = create_engine(settings.database_url, connect_args=connect_args)
+
+def _resolve_sqlite_url(url: str) -> str:
+    """Ensure the parent directory for a file-based SQLite DB exists.
+
+    On some hosts (e.g. Render's free plan, which has no persistent disk) the
+    configured path such as ``/var/data/finance4life.db`` may not exist or be
+    writable. We try to create the directory; if that fails we fall back to a
+    writable location so the app can still boot.
+    """
+    prefix = "sqlite:///"
+    if not url.startswith(prefix):
+        return url
+
+    # Strip the scheme; an extra leading slash means an absolute path.
+    raw_path = url[len(prefix):]
+    if not raw_path or raw_path == ":memory:":
+        return url
+
+    db_path = Path("/" + raw_path.lstrip("/")) if raw_path.startswith("/") else Path(raw_path)
+    try:
+        db_path.parent.mkdir(parents=True, exist_ok=True)
+        # Verify we can actually write there.
+        if not os.access(db_path.parent, os.W_OK):
+            raise PermissionError(db_path.parent)
+        return url
+    except (OSError, PermissionError):
+        fallback = Path("/tmp/finance4life.db")
+        return f"sqlite:///{fallback}"
+
+
+_database_url = _resolve_sqlite_url(settings.database_url)
+connect_args = {"check_same_thread": False} if _database_url.startswith("sqlite") else {}
+engine = create_engine(_database_url, connect_args=connect_args)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

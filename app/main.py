@@ -23,6 +23,10 @@ async def lifespan(app: FastAPI):
     db = SessionLocal()
     try:
         seed_assets(db)
+    except Exception as exc:  # pragma: no cover - don't let seeding crash boot
+        import logging
+
+        logging.getLogger("uvicorn.error").warning("seed_assets failed: %s", exc)
     finally:
         db.close()
     yield
