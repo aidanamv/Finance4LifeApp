@@ -37,7 +37,18 @@ def _resolve_sqlite_url(url: str) -> str:
         return f"sqlite:///{fallback}"
 
 
-_database_url = _resolve_sqlite_url(settings.database_url)
+def _normalize_db_url(url: str) -> str:
+    """Normalize a database URL for SQLAlchemy 2.0.
+
+    Some hosts (e.g. Render, Heroku) expose Postgres as ``postgres://``, but
+    SQLAlchemy 2.0 only accepts the ``postgresql://`` scheme.
+    """
+    if url.startswith("postgres://"):
+        return "postgresql://" + url[len("postgres://"):]
+    return url
+
+
+_database_url = _resolve_sqlite_url(_normalize_db_url(settings.database_url))
 connect_args = {"check_same_thread": False} if _database_url.startswith("sqlite") else {}
 engine = create_engine(_database_url, connect_args=connect_args)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

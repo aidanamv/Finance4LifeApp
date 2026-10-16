@@ -29,6 +29,22 @@ async def lifespan(app: FastAPI):
         logging.getLogger("uvicorn.error").warning("seed_assets failed: %s", exc)
     finally:
         db.close()
+
+    # Ensure lesson content exists. On hosts without a persistent disk (e.g.
+    # Render's free plan) the slide images live on an ephemeral filesystem, so
+    # we re-render them from the committed source PDFs whenever they're missing.
+    try:
+        from import_pdfs import seed_lessons
+
+        imported = seed_lessons(only_if_empty=True)
+        if imported:
+            import logging
+
+            logging.getLogger("uvicorn.error").info("seeded %d lesson(s)", imported)
+    except Exception as exc:  # pragma: no cover - don't let seeding crash boot
+        import logging
+
+        logging.getLogger("uvicorn.error").warning("seed_lessons failed: %s", exc)
     yield
 
 

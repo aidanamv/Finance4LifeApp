@@ -11,12 +11,17 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.11.6"
-      # NOTE: Render's FREE plan has no persistent disk. We use a local SQLite
-      # file which resets on each redeploy. For data that must survive deploys,
-      # upgrade the plan + re-add a disk, or use a managed Postgres database and
-      # set DATABASE_URL to the Postgres connection string.
+      # Persist user data (accounts, progress, wallets) in managed Postgres so
+      # it survives redeploys. Lesson content is re-seeded from the committed
+      # source PDFs on startup, so slides are always present.
       - key: DATABASE_URL
-        value: "sqlite:///./finance4life.db"
+        fromDatabase:
+          name: finance4life-db
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
+
+databases:
+  - name: finance4life-db
+    plan: free
 

@@ -58,19 +58,26 @@ def _pdf_to_pngs(pdf_path: Path, slug: str, width: int) -> list[str]:
     return paths
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--width", type=int, default=1600, help="PNG width in px.")
-    parser.add_argument(
-        "--age-band", default=AgeBand.TEENS.value, choices=[b.value for b in AgeBand]
-    )
-    parser.add_argument("--locale", default="es", help="Lesson locale tag.")
-    args = parser.parse_args()
+def seed_lessons(
+    width: int = 1600,
+    locale: str = "es",
+    age_band: str = AgeBand.TEENS.value,
+    only_if_empty: bool = True,
+) -> int:
+    """Import the pilot PDF decks as lessons. Idempotent.
 
+    When ``only_if_empty`` is True (used at app startup), this does nothing if
+    any lessons already exist — so it's safe to call on every boot. Returns the
+    number of lessons imported.
+    """
     init_db()
 
     db = SessionLocal()
     try:
+        if only_if_empty and db.query(Lesson).count() > 0:
+            return 0
+
+        imported = 0
         for order_index, (filename, title) in enumerate(DECKS):
             path = PPTS_DIR / filename
             if not path.exists():
@@ -88,12 +95,12 @@ def main() -> None:
 
             slug = _slug(title)
             print(f"[render] {path.name} -> PNGs ...")
-            images = _pdf_to_pngs(path, slug, args.width)
+            images = _pdf_to_pngs(path, slug, width)
 
             lesson = Lesson(
                 title=title,
-                age_band=AgeBand(args.age_band),
-                locale=args.locale,
+                age_band=AgeBand(age_band),
+                locale=locale,
                 order_index=order_index,
                 source_file=path.name,
             )
@@ -112,9 +119,29 @@ def main() -> None:
                 )
             db.commit()
             db.refresh(lesson)
+            imported += 1
             print(f"[ok] Imported '{lesson.title}' with {len(images)} slides from PDF (id={lesson.id}).")
+        return imported
     finally:
         db.close()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--width", type=int, default=1600, help="PNG width in px.")
+    parser.add_argument(
+        "--age-band", default=AgeBand.TEENS.value, choices=[b.value for b in AgeBand]
+    )
+    parser.add_argument("--locale", default="es", help="Lesson locale tag.")
+    args = parser.parse_args()
+
+    # CLI always (re)imports, even if lessons already exist.
+    seed_lessons(
+        width=args.width,
+        locale=args.locale,
+        age_band=args.age_band,
+        only_if_empty=False,
+    )
 
 
 if __name__ == "__main__":
