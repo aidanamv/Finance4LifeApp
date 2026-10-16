@@ -7,9 +7,10 @@ services:
     buildCommand: "pip install -r requirements.txt"
     # Bind to the port Render provides via $PORT (shell-form with fallback).
     startCommand: "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}"
+    healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
-        value: "3.12.7"
+        value: "3.11.6"
       # NOTE: Render's FREE plan has no persistent disk. We use a local SQLite
       # file which resets on each redeploy. For data that must survive deploys,
       # upgrade the plan + re-add a disk, or use a managed Postgres database and
