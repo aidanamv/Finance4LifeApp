@@ -13,7 +13,7 @@
     });
     if (!r.ok) {
       let detail = r.statusText;
-      try { detail = (await r.json()).detail || detail; } catch (_) {}
+      try { detail = (await r.json()).detail || detail; } catch (_) { }
       throw new Error(detail);
     }
     return r.status === 204 ? null : r.json();
@@ -108,6 +108,52 @@
       a.className = 'px-space-md py-space-xs rounded-full text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high hover:text-on-surface';
       a.textContent = 'Settings';
       nav.appendChild(a);
+    }
+  }
+
+  // Inject a fixed bottom tab bar for phones (hidden on >= md screens), since
+  // the top nav is desktop-only. Also pads the page so content isn't hidden
+  // behind the bar. Safe to call on every page except the login screen.
+  function injectMobileNav() {
+    if (document.getElementById('f4l-mobile-nav')) return;
+
+    const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const tabs = [
+      { href: 'index.html', label: 'Learn', icon: 'school' },
+      { href: 'sims.html', label: 'Invest', icon: 'trending_up' },
+      { href: 'vault.html', label: 'Save', icon: 'savings' },
+      { href: 'settings.html', label: 'Settings', icon: 'settings' },
+    ];
+
+    const nav = document.createElement('nav');
+    nav.id = 'f4l-mobile-nav';
+    nav.setAttribute('aria-label', 'Primary');
+    nav.className =
+      'md:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-surface-container-high ' +
+      'shadow-[0_-2px_10px_rgba(0,0,0,0.06)] flex items-stretch justify-around ' +
+      'pb-[env(safe-area-inset-bottom)]';
+
+    nav.innerHTML = tabs
+      .map((t) => {
+        const active = page === t.href || (page === '' && t.href === 'index.html');
+        const color = active ? 'text-primary' : 'text-on-surface-variant';
+        return `<a href="${t.href}" aria-label="${t.label}"${active ? ' aria-current="page"' : ''}
+          class="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 ${color} active:scale-95 transition-transform">
+          <span class="material-symbols-outlined text-[22px]">${t.icon}</span>
+          <span class="text-[11px] font-bold leading-none">${t.label}</span>
+        </a>`;
+      })
+      .join('');
+
+    document.body.appendChild(nav);
+    // Reserve space so the fixed bar never covers page content on mobile only
+    // (the bar is hidden at >= md, so desktop needs no extra padding).
+    if (!document.getElementById('f4l-mobile-nav-style')) {
+      const style = document.createElement('style');
+      style.id = 'f4l-mobile-nav-style';
+      style.textContent =
+        '@media (max-width: 767px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom))!important;}}';
+      document.head.appendChild(style);
     }
   }
 
@@ -215,7 +261,7 @@
       const limitByTf = { '1D': 2, '1W': 7, '1M': 30, '1Y': 365, 'ALL': 365 };
       const limit = limitByTf[currentTf] || 365;
       let prices = [];
-      try { prices = (await api.assetHistory(current.id, limit)).prices || []; } catch (_) {}
+      try { prices = (await api.assetHistory(current.id, limit)).prices || []; } catch (_) { }
       if (prices.length < 2) prices = [current.current_price, current.current_price];
       const W = 500, H = 200, pad = 10;
       const min = Math.min(...prices), max = Math.max(...prices);
@@ -675,7 +721,7 @@
     setWalletPill(wallet.coins);
 
     let lessons = [];
-    try { lessons = await api.listLessons(); } catch (_) {}
+    try { lessons = await api.listLessons(); } catch (_) { }
 
     // Replace the static "Simulation Sandbox" infographic card with a live
     // inline viewer of the first imported lesson's real slides.
@@ -707,7 +753,7 @@
       try {
         const prog = await api.listProgress(childId);
         prog.forEach((p) => { progressMap[p.lesson_id] = p; });
-      } catch (_) {}
+      } catch (_) { }
       const currentIdx = lessons.findIndex((l) => !(progressMap[l.id] && progressMap[l.id].completed));
 
       list.innerHTML = lessons.map((l, i) => {
@@ -767,7 +813,7 @@
     async function updateHero() {
       if (!lessons.length) return;
       let prog = [];
-      try { prog = await api.listProgress(childId); } catch (_) {}
+      try { prog = await api.listProgress(childId); } catch (_) { }
       const byId = {};
       prog.forEach((p) => { byId[p.lesson_id] = p; });
       const total = lessons.length;
@@ -854,7 +900,7 @@
             feedbackEl.classList.remove('hidden');
           }
           if (typeof res.coins === 'number') setWalletPill(res.coins);
-          try { updateStatsPills(await api.getStats(childId)); } catch (_) {}
+          try { updateStatsPills(await api.getStats(childId)); } catch (_) { }
         });
       });
     }
@@ -995,8 +1041,8 @@
             </div>
             <div class="mt-space-lg pt-space-sm flex items-center justify-between gap-space-xs bg-surface-container-low p-space-xs rounded">
               ${done
-                ? '<span class="flex items-center gap-1.5 text-secondary font-label-sm text-[11px] font-bold"><span class="material-symbols-outlined text-[16px]">verified</span> Goal reached!</span>'
-                : `<button class="goal-deposit flex items-center gap-1 px-space-sm py-space-2xs rounded-full bg-primary text-on-primary font-label-sm text-[11px] font-bold shadow-[0_2px_0_0_#00458f] active:translate-y-0.5 active:shadow-none transition-all" data-gid="${g.id}"><span class="material-symbols-outlined text-[14px]">add_circle</span> Deposit 20</button>`}
+              ? '<span class="flex items-center gap-1.5 text-secondary font-label-sm text-[11px] font-bold"><span class="material-symbols-outlined text-[16px]">verified</span> Goal reached!</span>'
+              : `<button class="goal-deposit flex items-center gap-1 px-space-sm py-space-2xs rounded-full bg-primary text-on-primary font-label-sm text-[11px] font-bold shadow-[0_2px_0_0_#00458f] active:translate-y-0.5 active:shadow-none transition-all" data-gid="${g.id}"><span class="material-symbols-outlined text-[14px]">add_circle</span> Deposit 20</button>`}
               <button class="goal-delete text-outline hover:text-error transition-colors" data-del="${g.id}" title="Delete goal"><span class="material-symbols-outlined text-[18px]">delete</span></button>
             </div>`;
           grid.insertBefore(card, ctaCard);
@@ -1064,13 +1110,17 @@
   // Boot: detect the page and wire it up.
   // -------------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', async () => {
-    // Pages that manage their own lifecycle (no child session required yet).
-    if (document.getElementById('f4l-login-form') || document.getElementById('f4l-settings-form')) return;
+    // The login screen has no primary nav.
+    if (document.getElementById('f4l-login-form')) return;
+    // Every other page (including Settings) gets the mobile bottom nav.
+    injectMobileNav();
+    // The settings page manages its own lifecycle (no child session required).
+    if (document.getElementById('f4l-settings-form')) return;
     try {
       const childId = ensureChild();
       enhanceHeader();
       // Record today's visit (updates streak) and reflect real stats in the header.
-      try { updateStatsPills(await api.registerActivity(childId)); } catch (_) {}
+      try { updateStatsPills(await api.registerActivity(childId)); } catch (_) { }
       if (document.getElementById('live-chart-svg')) await initSims(childId);
       else if (document.getElementById('quiz-options')) await initQuest(childId);
       else if (document.getElementById('headerTotalSaved')) await initVault(childId);
